@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PoliMercado - Escuela</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Logo_Instituto_Polit%C3%A9cnico_Nacional.png" alt="IPN Logo" class="ipn-logo">
+            PoliMercado
+        </div>
+        <div class="mascot" id="nav-school-name">Cargando...</div>
+    </nav>
+
+    <main class="view active">
+        <button class="btn btn-outline" onclick="window.location.href='index.html'">← Volver a escuelas</button>
+        <h1 class="text-center" id="page-title">📍 Cargando...</h1>
+        <p class="text-center">¿Qué te gustaría hacer hoy en tu escuela?</p>
+        
+        <div class="btn-container" style="margin-top: 3rem;">
+            <button class="btn btn-large" onclick="document.getElementById('seller-view').style.display='block'; document.getElementById('buyer-view').style.display='none';">
+                📦 Soy Vendedor
+            </button>
+            <button class="btn btn-large btn-outline" onclick="document.getElementById('buyer-view').style.display='block'; document.getElementById('seller-view').style.display='none'; window.triggerBuyerView();">
+                🛍️ Soy Comprador
+            </button>
+        </div>
+
+        <!-- Vista Vendedor (Alineada al modelo relacional) -->
+        <div id="seller-view" style="display:none; margin-top: 3rem;">
+            <h2 class="text-center">Publicar un Producto/Servicio</h2>
+            <div class="form-card">
+                <form id="seller-form">
+                    <h3 style="margin-top:0;">Tus Datos (Registro Automático)</h3>
+                    <div class="form-group">
+                        <label>Tu Nombre Completo</label>
+                        <input type="text" id="seller-name" placeholder="Ej. Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label>WhatsApp de contacto</label>
+                        <input type="text" id="seller-phone" placeholder="Ej. 5512345678" required>
+                    </div>
+                    <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--borde);">
+                    <h3>Datos del Producto</h3>
+                    <div class="form-group">
+                        <label>Foto del producto</label>
+                        <input type="file" id="prod-img" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre del producto o servicio</label>
+                        <input type="text" id="prod-name" placeholder="Ej. Tacos de canasta, Asesorías..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        <select id="prod-category" required>
+                            <option value="">Selecciona una categoría</option>
+                            <option value="Comida">Comida</option>
+                            <option value="Servicios">Servicios académicos/técnicos</option>
+                            <option value="Tecnología">Tecnología y Electrónica</option>
+                            <option value="Materiales">Materiales y Libros</option>
+                            <option value="Otros">Otros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Precio de Venta (MXN)</label>
+                        <input type="number" id="prod-price" min="0" step="0.50" placeholder="Ej. 25.50" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Stock disponible</label>
+                        <input type="number" id="prod-stock" min="1" placeholder="Cantidad" required>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="prod-global">
+                        <label for="prod-global" style="margin:0;">Publicar a nivel global (Visible para todas las escuelas del IPN)</label>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Publicar Artículo</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Vista Comprador -->
+        <div id="buyer-view" style="display:none; margin-top: 3rem;">
+            <h2 class="text-center" id="buyer-title">Mercado</h2>
+            <div class="filters">
+                <select id="filter-category" onchange="window.filterProducts()" style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                    <option value="All">Todas las categorías</option>
+                    <option value="Comida">Comida</option>
+                    <option value="Servicios">Servicios</option>
+                    <option value="Tecnología">Tecnología</option>
+                    <option value="Materiales">Materiales</option>
+                    <option value="Otros">Otros</option>
+                </select>
+            </div>
+            <div class="products-grid" id="products-container"></div>
+        </div>
+    </main>
+
+    <script type="module" src="app.js"></script>
+    <script type="module">
+        import { initSchoolPage } from './app.js';
+        document.addEventListener("DOMContentLoaded", () => {
+            initSchoolPage();
+        });
+    </script>
+</body>
+</html>

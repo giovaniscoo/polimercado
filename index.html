@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PoliMercado - IPN</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐴</text></svg>">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="img/burritovendedor.jpg" alt="Logo IPN" class="ipn-logo">
-            <span>PoliMercado</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Logo_Instituto_Polit%C3%A9cnico_Nacional.png" alt="IPN Logo" class="ipn-logo">
+            PoliMercado
         </div>
         <div class="mascot">
-            <span>🐴 Burrito Blanco</span>
+            Burro Blanco 🫏
         </div>
     </nav>
 
@@ -24,11 +24,10 @@
         <h2 class="text-center" style="margin-top: 2rem; color: var(--guinda);">Nivel Superior</h2>
         
         <div class="school-grid" id="schools-container">
-            <!-- Escuelas generadas por app.js -->
+            <!-- Renderizado dinámico desde app.js -->
         </div>
     </main>
 
-    <!-- NOTA IMPORTANTE: type="module" es necesario para importar Supabase -->
     <script type="module" src="app.js"></script>
     <script type="module">
         import { renderSchoolsGrid } from './app.js';
