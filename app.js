@@ -22,7 +22,7 @@ const logos = {
     "ESCOM": "https://www.escom.ipn.mx/images/conocenos/escudoESCOM.png",
     "ESE": "https://ipn.mx/assets/files/saes/img/ns/ese.png",
     "ESEO": "https://ipn.mx/assets/files/saes/img/ns/eseo.png",
-    "ESFM": "https://www.esfm.ipn.mx/assets/files/esfm/img/escudos/Escudo_ESFM.png",
+    "ESFM": "https://ipn.mx/assets/files/saes/img/ns/esfm.png",
     "ESIA Tecamachalco": "https://ipn.mx/assets/files/saes/img/ns/esia-tec.png",
     "ESIA Ticomán": "https://ipn.mx/assets/files/saes/img/ns/esia-tec.png",
     "ESIA Zacatenco": "https://ipn.mx/assets/files/saes/img/ns/esia-tec.png",
